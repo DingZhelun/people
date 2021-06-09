@@ -8,10 +8,10 @@
         <version>2.5.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>mudemo</artifactId>
+    <groupId>com.people</groupId>
+    <artifactId>people</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>mudemo</name>
+    <name>people</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
