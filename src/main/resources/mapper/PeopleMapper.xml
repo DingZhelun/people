@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.people.people.dao.PeopleDao">
+    <select id="searchPeople" resultType="com.people.people.model.People">
+        SELECT * FROM people
+        <where>
+--             Name = #{name}
+            1=1
+            <if test="name != null">and Name like concat('%',
+                #{name},
+                '%')
+            </if>
+        </where>
+
+    </select>
+</mapper>
