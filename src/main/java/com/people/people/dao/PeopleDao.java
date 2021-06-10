@@ -22,9 +22,15 @@ public interface PeopleDao {
     @Update("UPDATE people SET Name=#{name},State=#{state},Salary=#{salary},Grade=#{grade},Room=#{room},Telnum=#{telnum},Picture=#{picture},Keywords=#{keywords} WHERE Name=#{name}")
     void updatePeople(JSONObject request);
 
-    @Delete("DELETE FROM people WHERE name=#{name}")
+    @Delete("DELETE FROM people WHERE Name=#{name}")
     void deletePeople(@Param("name") String name);
 
     @Select("SELECT * FROM people WHERE Name=#{name}")
     List<People> searchPeople(JSONObject request);
+
+    @Select("SELECT * FROM people WHERE Room=#{room}")
+    List<People> searchRoom(JSONObject request);
+
+    @Select("SELECT * FROM people WHERE #{grade_1}<=Grade and Grade<=#{grade_2}")
+    List<People> searchGrade(JSONObject request);
 }

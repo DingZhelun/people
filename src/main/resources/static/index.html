@@ -9,6 +9,50 @@
 <body>
 <!--头部-->
 <div style="margin: 10px 0 10px 1%;width: 99%">
+    <h1>Zhelun Ding 1001888813</h1>
+</div>
+<div style="margin: 10px 0 10px 1%;width: 99%">
+    <div style="display: table-cell">
+        <form class="layui-form" id="search_room">
+            <div class="layui-input-block" style="display: table-cell">
+                <!--            <label>&emsp;接&emsp;口&emsp;</label>-->
+                <div class="layui-input-inline" style="width: 260px">
+                    <input type="text" name="room" placeholder="please input room"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div style="display: table-cell">
+                <button class="layui-btn layui-btn-sm layui-btn-danger" lay-submit lay-filter="search_r"
+                        style="margin-left: 15px"><i class="layui-icon">&#xe615;</i>Search
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div style="margin: 10px 0 10px 1%;width: 99%">
+    <div style="display: table-cell">
+        <form class="layui-form" id="search_grade">
+            <div class="layui-input-block" style="display: table-cell">
+                <div class="layui-input-inline" style="width: 128px">
+                    <input type="text" name="grade_1" placeholder="small grade"
+                           autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-input-inline" style="width: 128px">
+                    <input type="text" name="grade_2" placeholder="large grade"
+                           autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div style="display: table-cell">
+                <button class="layui-btn layui-btn-sm layui-btn-danger" lay-submit lay-filter="search_g"
+                        style="margin-left: 15px"><i class="layui-icon">&#xe615;</i>Search
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div style="margin: 10px 0 10px 1%;width: 99%">
     <div style="display: table-cell">
         <form class="layui-form" id="search_form">
             <div class="layui-input-block" style="display: table-cell">
@@ -23,12 +67,10 @@
                 <button class="layui-btn layui-btn-sm layui-btn-danger" lay-submit lay-filter="search"
                         style="margin-left: 15px"><i class="layui-icon">&#xe615;</i>Search
                 </button>
-                <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
-                    <i class="layui-icon">&#xe631;</i>Reset
-                </button>
             </div>
         </form>
     </div>
+
     <div style="display: table-cell">
         <div style="display: table">
             <!--新增-->
@@ -105,10 +147,26 @@
                 </div>
             </div>
         </div>
+        <div class="layui-form-item" style="display: table;width: 96%">
+            <div class="layui-form-item" style="display: table-cell;width: 50%">
+                <label class="layui-form-label">Room</label>
+                <div class="layui-input-block">
+                    <input type="text" name="picture" placeholder="Please input picture"
+                           autocomplete="off" class="layui-input" lay-verify="required">
+                </div>
+            </div>
+            <div class="layui-form-item" style="display: table-cell;width: 50%">
+                <label class="layui-form-label">Telnum</label>
+                <div class="layui-input-block">
+                    <input type="text" name="keywords" placeholder="Please input Keywords"
+                           autocomplete="off" class="layui-input" lay-verify="required">
+                </div>
+            </div>
+        </div>
         <div class="layui-form-item" style="margin-left: 40%">
             <div class="layui-btn-group">
-                <button class="layui-btn" lay-submit="" lay-filter="update_submit">提&ensp;交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重&ensp;置</button>
+                <button class="layui-btn" lay-submit="" lay-filter="update_submit">Submit</button>
+                <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
             </div>
         </div>
     </form>
@@ -153,7 +211,7 @@
                     , {field: 'grade', title: 'Grade', width: '10%', align: 'center'}
                     , {field: 'room', title: 'Room', width: '10%', align: 'center'}
                     , {field: 'telnum', title: 'Telnum', width: '10%', align: 'center'}
-                    , {field: 'picture', title: 'Picture', width: '10%',align: 'center',templet:'<div><img style="height:100px;width:100px;" src=https://zxd8813.blob.core.windows.net/zxd8813/@d.picture"></div>'}
+                    , {field: 'picture', title: 'Picture', width: '10%',align: 'center',templet:'<div><img style="height:100px;width:100px;" src="https://zxd8813.blob.core.windows.net/zxd8813/chuck.jpg"></div>'}
                     , {field: 'keywords', title: 'Keywords', width: '10%', align: 'center'}
                     , {
                         fixed: 'right',
@@ -260,6 +318,30 @@
             if (count !== 0) {
                 //数据表格重载
                 tableReload('goodsReload', formData, "application/json; charset=utf-8", '/people/searchPeople', 'post');
+            } else {
+                parent.layer.msg('please select the query condition！', {icon: 2, time: 1500});
+            }
+            return false;
+        });
+
+        form.on('submit(search_r)', function (data) {
+            var formData = data.field;
+            var count = checkForm("search_room");
+            if (count !== 0) {
+                //数据表格重载
+                tableReload('goodsReload', formData, "application/json; charset=utf-8", '/people/searchRoom', 'post');
+            } else {
+                parent.layer.msg('please select the query condition！', {icon: 2, time: 1500});
+            }
+            return false;
+        });
+
+        form.on('submit(search_g)', function (data) {
+            var formData = data.field;
+            var count = checkForm("search_grade");
+            if (count !== 0) {
+                //数据表格重载
+                tableReload('goodsReload', formData, "application/json; charset=utf-8", '/people/searchGrade', 'post');
             } else {
                 parent.layer.msg('please select the query condition！', {icon: 2, time: 1500});
             }

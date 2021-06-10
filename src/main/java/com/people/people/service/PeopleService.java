@@ -14,4 +14,8 @@ public interface PeopleService {
     JSONObject deletePeople(String name);
 
     JSONObject searchPeople(JSONObject request);
+
+    JSONObject searchRoom(JSONObject request);
+
+    JSONObject searchGrade(JSONObject request);
 }

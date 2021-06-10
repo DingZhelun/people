@@ -36,4 +36,14 @@ public class PeopleController {
         return peopleService.searchPeople(request);
     }
 
+    @RequestMapping(value = "searchRoom",method = RequestMethod.POST)
+    public JSONObject searchRoom(@RequestBody JSONObject request){
+        return peopleService.searchRoom(request);
+    }
+
+    @RequestMapping(value = "searchGrade",method = RequestMethod.POST)
+    public JSONObject searchGrade(@RequestBody JSONObject request){
+        return peopleService.searchRoom(request);
+    }
+
 }

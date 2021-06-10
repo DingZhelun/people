@@ -94,4 +94,40 @@ public class PeopleServiceImpl implements PeopleService {
         }
         return result;
     }
+
+    public JSONObject searchRoom(JSONObject request) {
+        JSONObject result = new JSONObject();
+        try {
+            int pageNum = request.getInteger("pageNum");
+            int pageSize = request.getInteger("pageSize");
+            PageInfo<People> pageInfo = new PageInfo(peopleDao.searchRoom(request));
+
+            result.put("code", "0");
+            result.put("msg", "operation success！");
+            result.put("data", pageInfo.getList());
+            result.put("count", pageInfo.getTotal());
+        } catch (Exception e) {
+            result.put("code", "500");
+            result.put("msg", "query error！");
+        }
+        return result;
+    }
+
+    public JSONObject searchGrade(JSONObject request) {
+        JSONObject result = new JSONObject();
+        try {
+            int pageNum = request.getInteger("pageNum");
+            int pageSize = request.getInteger("pageSize");
+            PageInfo<People> pageInfo = new PageInfo(peopleDao.searchGrade(request));
+
+            result.put("code", "0");
+            result.put("msg", "operation success！");
+            result.put("data", pageInfo.getList());
+            result.put("count", pageInfo.getTotal());
+        } catch (Exception e) {
+            result.put("code", "500");
+            result.put("msg", "query error！");
+        }
+        return result;
+    }
 }
