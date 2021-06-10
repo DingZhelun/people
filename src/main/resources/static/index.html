@@ -211,7 +211,7 @@
                     , {field: 'grade', title: 'Grade', width: '10%', align: 'center'}
                     , {field: 'room', title: 'Room', width: '10%', align: 'center'}
                     , {field: 'telnum', title: 'Telnum', width: '10%', align: 'center'}
-                    , {field: 'picture', title: 'Picture', width: '10%',align: 'center',templet:'<div><img style="height:100px;width:100px;" src="/static/{{d.picture}}"></div>'}
+                    , {field: 'picture', title: 'Picture', width: '10%',align: 'center',templet:'<div>{{# if(d.picture!=null){ }}<img style="height:100px;width:100px;" src="/image/{{d.picture}}">{{# } }}</div>'}
                     , {field: 'keywords', title: 'Keywords', width: '10%', align: 'center'}
                     , {
                         fixed: 'right',
