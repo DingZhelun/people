@@ -43,7 +43,7 @@ public class PeopleController {
 
     @RequestMapping(value = "searchGrade",method = RequestMethod.POST)
     public JSONObject searchGrade(@RequestBody JSONObject request){
-        return peopleService.searchRoom(request);
+        return peopleService.searchGrade(request);
     }
 
 }
